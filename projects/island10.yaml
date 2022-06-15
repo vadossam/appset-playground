@@ -9,19 +9,19 @@ spec:
       repoURL: 'https://github.com/vadossam/appset-playground.git'
       revision: master
       directories:
-        - path: apps/*
-        - path: apps/undercloud/*
-          exclude: true
-    - git:
+      - path: apps/generic/*
+      #- path: apps/undercloud/*
+      #  exclude: true
+  - git:
       repoURL: 'https://github.com/vadossam/appset-playground.git'
       revision: master
       files:
-        - path: apps/**/overlays/island10/config.json
+      - path: apps/**/overlays/island10/config.json
       template:
         metadata: {}
         spec:
           destination:
-            name: in-cluster
+            server: https://kubernetes.default.svc
             namespace: default
           project: default
           source:
@@ -34,7 +34,7 @@ spec:
     spec:
       destination:
         namespace: default
-        server: in-cluster
+        server: https://kubernetes.default.svc
       project: default
       source:
         path: '{{ path }}'
