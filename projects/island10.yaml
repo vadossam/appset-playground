@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: island10
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: 'https://github.com/vadossam/appset-playground.git'
+      revision: master
+      directories:
+        - path: apps/*
+        - path: apps/undercloud/*
+          exclude: true
+    - git:
+      repoURL: 'https://github.com/vadossam/appset-playground.git'
+      revision: master
+      files:
+        - path: apps/**/overlays/island10/config.json
+      template:
+        metadata: {}
+        spec:
+          destination:
+            name: in-cluster
+            namespace: default
+          project: default
+          source:
+            repoURL: 'https://github.com/vadossam/appset-playground.git'
+            path: '{{ srcPath }}'
+  template:
+    metadata:
+      name: '{{ path.basename }}'
+      namespace: argocd
+    spec:
+      destination:
+        namespace: default
+        server: in-cluster
+      project: default
+      source:
+        path: '{{ path }}'
+        repoURL: 'https://github.com/vadossam/appset-playground.git'
+        targetRevision: master
+      syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: true

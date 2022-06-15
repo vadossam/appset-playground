@@ -1,0 +1,1 @@
+{"appName":"demoapp","userGivenName":"demoapp","destNamespace":"default","destServer":"https://kubernetes.default.svc","srcPath":"apps/overcloud/demoapp/overlays/island10","srcRepoURL":"https://github.com/todaywasawesome/autopilotdemo.git","srcTargetRevision":"","labels":null}
