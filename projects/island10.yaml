@@ -8,32 +8,35 @@ spec:
   - git:
       repoURL: 'https://github.com/vadossam/appset-playground.git'
       revision: master
-      directories:
-      - path: apps/generic/*
-      - path: apps/overcloud/*
-  - git:
-      repoURL: 'https://github.com/vadossam/appset-playground.git'
-      revision: master
       files:
       - path: apps/**/overlays/island10/config.json
       template:
-        metadata: {}
+        metadata:
+          name: '{{ path[2] }}-island10'
+          namespace: argocd
         spec:
           destination:
-            server: https://kubernetes.default.svc
+            server: '{{ destServer }}'
             namespace: default
           project: default
           source:
             repoURL: 'https://github.com/vadossam/appset-playground.git'
             path: '{{ srcPath }}'
+  - git:
+      repoURL: 'https://github.com/vadossam/appset-playground.git'
+      revision: master
+      directories:
+      - path: apps/generic/*
+      - path: apps/overcloud/*
+
   template:
     metadata:
-      name: '{{ path.basename }}'
+      name: '{{ path.basename }}-island10'
       namespace: argocd
     spec:
       destination:
         namespace: default
-        server: https://kubernetes.default.svc
+        server: '{{ destServer }}'
       project: default
       source:
         path: '{{ path }}'
