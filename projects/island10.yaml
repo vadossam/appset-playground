@@ -26,12 +26,12 @@ spec:
       repoURL: 'https://github.com/vadossam/appset-playground.git'
       revision: master
       directories:
-      - path: apps/generic/*
-      - path: apps/overcloud/*
+      - path: apps/generic/*/base
+      - path: apps/overcloud/*/base
 
   template:
     metadata:
-      name: '{{ path.basename }}-island10'
+      name: '{{ path[2] }}-island10'
       namespace: argocd
     spec:
       destination:

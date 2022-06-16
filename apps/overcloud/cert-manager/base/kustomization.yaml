@@ -10,6 +10,7 @@ helmChartInflationGenerator:
 - chartName: cert-manager
   chartRepoUrl: https://charts.jetstack.io
   chartVersion: 1.7.0
+  releaseName: cert-manager
   values: values.yaml
   valuesLocal:
     replicaCount: 2
