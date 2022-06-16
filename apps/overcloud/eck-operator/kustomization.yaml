@@ -6,5 +6,3 @@ helmChartInflationGenerator:
   chartRepoUrl: https://helm.elastic.co
   chartVersion: 2.2.0
   releaseName: eck-operator
-  # override with these custom values
-  values: values.yaml
