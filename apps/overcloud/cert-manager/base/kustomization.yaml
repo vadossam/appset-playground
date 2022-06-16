@@ -3,5 +3,15 @@ kind: Kustomization
 
 #resources:
 #  - chart.yaml
-generators:
-  - chart.yaml
+#generators:
+#  - chart.yaml
+
+helmChartInflationGenerator:
+- name: cert-manager
+  repo: https://charts.jetstack.io
+  version: 1.7.0
+  releaseName: logging-operator
+  # override with these custom values
+  valuesFile: values.yaml
+  valuesInline:
+    replicaCount: 2
