@@ -3,4 +3,6 @@ kind: Kustomization
 resources:
 - ../../base
 
-replicaCount: 2
+helmChartInflationGenerator:
+- chartName: cert-manager
+  values: values.yaml
