@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmChartInflationGenerator:
+- chartName: eck-operator
+  chartRepoUrl: https://helm.elastic.co
+  chartVersion: 2.2.0
+  releaseName: eck-operator
+  # override with these custom values
+  values: values.yaml

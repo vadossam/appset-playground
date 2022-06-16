@@ -10,8 +10,7 @@ spec:
       revision: master
       directories:
       - path: apps/generic/*
-      #- path: apps/undercloud/*
-      #  exclude: true
+      - path: apps/overcloud/*
   - git:
       repoURL: 'https://github.com/vadossam/appset-playground.git'
       revision: master
@@ -42,6 +41,5 @@ spec:
         targetRevision: master
       syncPolicy:
         automated:
-          allowEmpty: true
           prune: true
           selfHeal: true
