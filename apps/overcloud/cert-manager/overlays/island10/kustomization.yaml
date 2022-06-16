@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
 - ../../base
 
-patchesStrategicMerge:
-- custom.yaml
+#patchesStrategicMerge:
+#- custom.yaml
