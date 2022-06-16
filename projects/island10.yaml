@@ -36,7 +36,7 @@ spec:
     spec:
       destination:
         namespace: default
-        server: '{{ destServer }}'
+        server: https://kubernetes.default.svc
       project: default
       source:
         path: '{{ path }}'
