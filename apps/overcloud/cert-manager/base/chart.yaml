@@ -11,4 +11,3 @@ releaseName: cert-manager
 
 valuesInline:
   installCRDs: true
-  replicaCount: 2
