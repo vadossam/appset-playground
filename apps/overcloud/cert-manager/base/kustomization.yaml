@@ -10,8 +10,9 @@ helmChartInflationGenerator:
 - chartName: cert-manager
   chartRepoUrl: https://charts.jetstack.io
   chartVersion: 1.7.0
-  releaseName: logging-operator
-  # override with these custom values
   values: values.yaml
   valuesLocal:
     replicaCount: 2
+  # valuesMerge specifies how to treat valuesLocal with respect to Values.
+  # Legal values: 'merge', 'override', 'replace'.
+  # Defaults to 'override'.
