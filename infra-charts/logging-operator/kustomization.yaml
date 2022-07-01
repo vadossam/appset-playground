@@ -12,6 +12,10 @@ helmChartInflationGenerator:
   values: values.yaml
   valuesLocal:
     replicaCount: 2
+    resources:
+      limits:
+        cpu: 200m
+        memory: 256Mi
   # valuesMerge specifies how to treat valuesLocal with respect to Values.
   # Legal values: 'merge', 'override', 'replace'.
   # Defaults to 'override'.
