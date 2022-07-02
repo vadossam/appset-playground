@@ -9,7 +9,7 @@ version: 3.17.7
 valuesFile: values.yaml
 namespace: cattle-logging-system
 valuesInline:
-  #replicaCount: 2
+  replicaCount: 3
   resources:
     limits:
       cpu: 200m
