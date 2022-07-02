@@ -6,7 +6,8 @@ name: logging-operator
 releaseName: logging-operator
 repo:  https://kubernetes-charts.banzaicloud.com
 version: 3.17.7
-values: values.yaml
+valuesFile: values.yaml
+namespace: cattle-logging-system
 valuesInline:
   replicaCount: 2
   resources:
