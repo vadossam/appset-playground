@@ -1,0 +1,32 @@
+{{- $paths:= list }}
+{{ range $path, $_ :=  .Files.Glob "kustomize-charts/**" }}
+  {{- $paths = append $paths (dir $path) }}
+{{- end }}
+
+{{ range $path := $paths | uniq }}
+{{- if (dir $path | regexFind (printf "general|%s" $.Values.role)) }}
+{{- $chart_name := base $path }}
+{{- $namespace := base (dir $path) }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $chart_name }}-{{ $.Values.island }}
+  namespace: argocd
+spec:
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+  source:
+    repoURL: https://github.com/vadossam/appset-playground
+    path: infra-charts/apps/{{ $path }}
+    targetRevision: HEAD
+  destination:
+    name: in-cluster
+    namespace: {{ $namespace }}
+{{- end }}
+{{- end }}
