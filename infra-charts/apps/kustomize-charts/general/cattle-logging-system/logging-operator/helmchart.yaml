@@ -4,7 +4,6 @@ metadata:
   name: logging-operator
 name: logging-operator
 releaseName: logging-operator
-values: values.yaml
 repo:  https://kubernetes-charts.banzaicloud.com
 version: 3.17.7
 values: values.yaml
