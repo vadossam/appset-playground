@@ -6,6 +6,7 @@ helmChartInflationGenerator:
   chartRepoUrl: https://charts.jetstack.io
   chartVersion: 1.7.0
   releaseName: cert-manager
+  releaseNamespace: cert-manager
   #values: values.yaml
   valuesLocal:
     installCRDs: true
